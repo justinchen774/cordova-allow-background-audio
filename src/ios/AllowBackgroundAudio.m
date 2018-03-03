@@ -18,7 +18,10 @@
 	// Test Change
     // from https://stackoverflow.com/questions/14122363/iphone-app-allow-background-music-to-continue-to-play?lq=1
     NSError *error;
-    BOOL success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:&error];
+    BOOL success = [[AVAudioSession sharedInstance]
+    	setCategory:AVAudioSessionCategoryPlayback
+    	withOptions:AVAudioSessionCategoryOptionDuckOthers
+    	error:&error];
     if (!success) {
         NSLog(@"%@", [error localizedDescription]);
     }
